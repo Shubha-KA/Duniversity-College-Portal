@@ -35,21 +35,21 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
-              secretKeyRef:
-                name: mariadb-secret
-                key: MARIADB_ROOT_PASSWORD
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: MARIADB_ROOT_PASSWORD
 
             - name: MYSQL_USER
               valueFrom:
-              configMapKeyRef:
-                name: mariadb-config
-                key: DB_USER
+                configMapKeyRef:
+                  name: mariadb-config
+                  key: DB_USER
 
             - name: MYSQL_PASSWORD
               valueFrom:
-              secretKeyRef:
-                name: mariadb-secret
-                key: DB_PASSWORD
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: DB_PASSWORD
 
             - name: MYSQL_DATABASE
               value: college_db
