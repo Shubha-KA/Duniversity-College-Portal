@@ -59,11 +59,12 @@ spec:
               mountPath: /var/lib/mysql
 
             - name: mariadb-initdb
-              mounthPath: /docker-entrypoint-initdb.d
+              mountPath: /docker-entrypoint-initdb.d
+
       volumes:
-        - name: maridb-initdb
+        - name: mariadb-initdb
           configMap:
-            name: mariadb-config
+            name: mariadb-init
 
         - name: mariadb-data
           persistentVolumeClaim:
