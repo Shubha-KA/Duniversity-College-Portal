@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duniversity-deployment
+  namespace: college-ns
+spec:
+  replicas: 2
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 2
+  selector:
+    matchLabels:
+      app: duniversity-app
+  template:
+    metadata:
+      labels:
+        app: duniversity-app
+    spec:
+      containers:
+        - name: duniversity-cont
+          image: shubha20/duniversity-college-portal-frontend:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            requests: 
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: duniversity-service
+  namespace: college-ns
+spec:
+  selector:
+    app: duniversity-app
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  type: ClusterIP
+

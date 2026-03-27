@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway 
+metadata:
+  name: kgateway
+  namespace: college-ns
+spec:
+  gatewayClassName: kgateway
+  listeners:
+    - name: duniversity
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: Same

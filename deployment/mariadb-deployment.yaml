@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-deployment
+  namespace: college-ns
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: maria-db
+  template:
+    metadata:
+      label:
+        app: maria-db
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:12-ubi
+          ports:
+            -containerPort: 3306
+          
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"
+          
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+              secretKeyRef:
+                name: mariadb-secret
+                key: MARIADB_ROOT_PASSWORD
+
+            - name: MYSQL_USER
+              valueFrom:
+              configMapKeyRef:
+                name: mariadb-config
+                key: DB_USER
+
+            - name: MYSQL_PASSWORD
+              valueFrom:
+              secretKeyRef:
+                name: mariadb-secret
+                key: DB_PASSWORD
+
+            - name: MYSQL_DATABASE
+              value: college_db
+
+          volumeMounts:
+            - name: mariadb-data
+              mountPath: /var/lib/mysql
+
+            - name: mariadb-initdb
+              mounthPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: maridb-initdb
+          configMap:
+            name: mariadb-config
+
+        - name: mariadb-data
+          persistentVolumeClaim:
+            claimName: duniversity-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-svc
+  namespace: college-ns
+spec:
+  selector:
+    app: maria-db
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+  type: ClusterIP
+  
