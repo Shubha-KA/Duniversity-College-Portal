@@ -51,9 +51,6 @@ spec:
                   name: mariadb-secret
                   key: DB_PASSWORD
 
-            - name: MYSQL_DATABASE
-              value: college_db
-
           volumeMounts:
             - name: mariadb-data
               mountPath: /var/lib/mysql
