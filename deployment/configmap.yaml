@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: mariadb-config
   namespace: college-ns
-stringdata:
+stringData:
   DB_USER: college_user
   DB_HOST: mariadb
   DB_PORT: "3306"
