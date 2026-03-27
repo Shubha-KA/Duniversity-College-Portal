@@ -15,7 +15,7 @@ spec:
       app: maria-db
   template:
     metadata:
-      label:
+      labels:
         app: maria-db
     spec:
       containers:
