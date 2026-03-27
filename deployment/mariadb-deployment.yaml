@@ -74,7 +74,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mariadb-svc
+  name: mariadb
   namespace: college-ns
 spec:
   selector:
