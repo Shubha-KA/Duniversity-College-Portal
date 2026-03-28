@@ -23,6 +23,7 @@ spec:
           image: shubha20/duniversity-college-portal-frontend:latest
           ports:
             - containerPort: 3000
+
           resources:
             requests: 
               memory: "128Mi"
@@ -30,6 +31,20 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "200m"
+          
+          env:
+           - name: MYSQL_USER
+             valueFrom:
+              configMapKeyRef:
+                name: mariadb-config
+                key: DB_USER
+
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: DB_PASSWORD
+
 ---
 apiVersion: v1
 kind: Service
