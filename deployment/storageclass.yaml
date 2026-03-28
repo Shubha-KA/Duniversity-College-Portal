@@ -6,7 +6,7 @@ provisioner: nfs.csi.k8s.io
 
 parameters: 
   server: 10.0.1.159
-  share: /var/nfs/general/duniversity
+  share: /var/nfs/general
 
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
