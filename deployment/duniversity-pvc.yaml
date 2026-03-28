@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: duniversity-pvc
+  name: college-pvc
   namespace: college-ns
 spec:
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 10Gi
+      storage: 8Gi
   storageClassName: csi-standard
