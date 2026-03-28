@@ -82,14 +82,14 @@ spec:
             name: mariadb-init
 
   volumeClaimTemplates:
-    metadata:
-      - name : mariadb-data
-    spec:
-      accessModes: [ "ReadWriteMany" ]
-      storageClassName: "my-storage-class"
-      resources:
-        requests:
-          storage: 2Gi
+    - metadata:
+       name : mariadb-data
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: "my-storage-class"
+        resources:
+          requests:
+            storage: 2Gi
 
 
   
