@@ -86,7 +86,7 @@ spec:
        name : mariadb-data
       spec:
         accessModes: [ "ReadWriteMany" ]
-        storageClassName: "my-storage-class"
+        storageClassName: "csi-standard"
         resources:
           requests:
             storage: 2Gi
