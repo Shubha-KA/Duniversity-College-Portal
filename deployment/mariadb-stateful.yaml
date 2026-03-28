@@ -19,7 +19,7 @@ metadata:
   name: mariadb-deployment
   namespace: college-ns
 spec:
-  serviceName: mariadb-svc
+  serviceName: mariadb
   replicas: 1
   # strategy:
   #   type: RollingUpdate
