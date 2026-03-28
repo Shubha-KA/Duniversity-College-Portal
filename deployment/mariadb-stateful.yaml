@@ -20,12 +20,12 @@ metadata:
   namespace: college-ns
 spec:
   serviceName: "mariadb-svc"
-  replicas: 3
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
+  replicas: 2
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxUnavailable: 1
+  #     maxSurge: 1
   selector:
     matchLabels:
       app: maria-db
