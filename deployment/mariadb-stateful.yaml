@@ -20,7 +20,7 @@ metadata:
   namespace: college-ns
 spec:
   serviceName: "mariadb-svc"
-  replicas: 2
+  replicas: 1
   # strategy:
   #   type: RollingUpdate
   #   rollingUpdate:
@@ -83,13 +83,13 @@ spec:
 
   volumeClaimTemplates:
     - metadata:
-       name : mariadb-data
+        name : mariadb-data
       spec:
         accessModes: [ "ReadWriteMany" ]
-        storageClassName: "csi-standard"
+        storageClassName: my-storage-class
         resources:
           requests:
-            storage: 2Gi
+            storage: 1Gi
 
 
   
