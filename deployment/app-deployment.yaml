@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: duniversity-cont
-          image: shubha20/duniversity-college-portal-frontend:latest
+          image: shubha20/duniversity-college-portal-frontend:v1.1.0
           ports:
             - containerPort: 3000
 
