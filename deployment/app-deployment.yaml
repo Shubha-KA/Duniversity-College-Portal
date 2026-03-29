@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: duniversity-deployment
   namespace: college-ns
+  labels:
+    app: duniversity-deploy
 spec:
   replicas: 1
   strategy: 
@@ -63,6 +65,8 @@ kind: Service
 metadata:
   name: duniversity-service
   namespace: college-ns
+  labels:
+    app: duniversity-app
 spec:
   selector:
     app: duniversity-app
