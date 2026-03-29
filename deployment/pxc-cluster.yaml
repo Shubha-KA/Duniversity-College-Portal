@@ -27,6 +27,7 @@ spec:
   haproxy:
     enabled: true
     size: 1
+    image: percona/percona-xtradb-cluster-operator:1.14.0-haproxy
 
   proxysql:
     enabled: false
