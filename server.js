@@ -1,5 +1,16 @@
+const client = require('prom-client');
+
+// collect default metrics
+client.collectDefaultMetrics();
+
 const express = require('express');
 const path = require('path');
+
+const httpRequestCounter = new client.Counter({
+  name: 'http_requests_total',
+  help: 'Total HTTP Requests'
+});
+
 const bodyParser = require('body-parser');
 const { grievanceDB, leaveDB, timetableDB, examsDB } = require('./db'); // ✅ added examsDB
 
@@ -10,6 +21,15 @@ const PORT = 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+  httpRequestCounter.inc();
+  next();
+});
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', client.register.contentType);
+  res.end(await client.register.metrics());
+});
 
 // Database health check endpoint
 app.get('/health', (req, res) => {
