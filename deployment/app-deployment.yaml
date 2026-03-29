@@ -32,18 +32,30 @@ spec:
               memory: "512Mi"
               cpu: "200m"
           
-          # env:
-          #  - name: MYSQL_USER
-          #    valueFrom:
-          #     configMapKeyRef:
-          #       name: mariadb-config
-          #       key: DB_USER
+          env:
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: mariadb-config
+                key: DB_HOST
 
-          #   - name: MYSQL_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: mariadb-secret
-          #         key: DB_PASSWORD
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: mariadb-config
+                key: DB_PORT
+
+          - name: DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: mariadb-config
+                key: DB_USER
+                
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mariadb-secret
+                key: DB_PASSWORD
 
 ---
 apiVersion: v1
