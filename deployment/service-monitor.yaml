@@ -3,6 +3,8 @@ kind: ServiceMonitor
 metadata:
   name: duniversity-monitor
   namespace: monitoring
+  labels: 
+    release: monitoring
 spec:
   selector:
     matchLabels:
