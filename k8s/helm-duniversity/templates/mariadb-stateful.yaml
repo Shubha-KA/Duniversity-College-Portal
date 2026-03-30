@@ -24,7 +24,7 @@ spec:
       terminationGracePeriodSeconds: {{ .Values.backend.terminationGracePeriodSeconds }}
       containers:
         - name: mariadb
-          image: {{ .Values.db_image.name }}:{{ .Values.db-image.tag }}
+          image: {{ .Values.db_image.name }}:{{ .Values.db_image.tag }}
           ports:
             - containerPort: 3306
           
