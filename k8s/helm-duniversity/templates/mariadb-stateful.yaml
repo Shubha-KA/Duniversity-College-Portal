@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mariadb-deployment
+  namespace: college-ns
+spec:
+  serviceName: mariadb
+  replicas: 1
+  # strategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxUnavailable: 1
+  #     maxSurge: 1
+  selector:
+    matchLabels:
+      app: maria-db
+  minReadySeconds: 10
+
+  template:
+    metadata:
+      labels:
+        app: maria-db
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: mariadb
+          image: mariadb:10.6
+          ports:
+            - containerPort: 3306
+          
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "512Mi"
+              cpu: "200m"
+          
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: MARIADB_ROOT_PASSWORD
+
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mariadb-config
+                  key: DB_USER
+
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mariadb-secret
+                  key: DB_PASSWORD
+
+          volumeMounts:
+            - name: mariadb-data
+              mountPath: /var/lib/mysql
+
+            - name: mariadb-initdb
+              mountPath: /docker-entrypoint-initdb.d
+
+      volumes:
+        - name: mariadb-initdb
+          configMap:
+            name: mariadb-init
+
+  volumeClaimTemplates:
+    - metadata:
+        name : mariadb-data
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        storageClassName: csi-standard
+        resources:
+          requests:
+            storage: 2Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb
+  namespace: college-ns
+spec:
+  selector:
+    app: maria-db
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+  clusterIP: None
+
+  
