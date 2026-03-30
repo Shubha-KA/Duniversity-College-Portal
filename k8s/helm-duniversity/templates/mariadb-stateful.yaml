@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mariadb-deployment
+  name: {{ .Values.backend-app.name }}
   namespace: college-ns
 spec:
   serviceName: mariadb
-  replicas: 1
+  replicas: {{ .Values.backend.replicaCount }}
   # strategy:
   #   type: RollingUpdate
   #   rollingUpdate:
@@ -14,17 +14,17 @@ spec:
   selector:
     matchLabels:
       app: maria-db
-  minReadySeconds: 10
+  minReadySeconds: {{ .Values.backend.minReadySeconds }}
 
   template:
     metadata:
       labels:
         app: maria-db
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: {{ .Values.backend.terminationGracePeriodSeconds }}
       containers:
         - name: mariadb
-          image: mariadb:10.6
+          image: {{ .Values.db-image.name }}:{{ .Values.db-image.tag }}
           ports:
             - containerPort: 3306
           

@@ -1,3 +1,4 @@
+#frontend values
 app:
   name: duniversity-deployment
 
@@ -9,3 +10,16 @@ image:
 
 ports:
   containerPort: 3000
+
+#backend values
+backend-app:
+  name: mariadb-deployment
+
+backend:
+  replicaCount: 2
+  minReadySeconds: 5
+  terminationGracePeriodSeconds: 5
+
+db-image:
+  name: mariadb
+  tag: 10.6
