@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
         - name: duniversity-cont
-          image: {{ .Values.image.repository }}: {{ .Values.image.tag }}
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           ports:
             - containerPort: {{ .Values.ports.containerPort }}
 
