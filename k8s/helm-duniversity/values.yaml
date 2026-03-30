@@ -12,7 +12,7 @@ ports:
   containerPort: 3000
 
 #backend values
-backend-app:
+backend_app:
   name: mariadb-deployment
 
 backend:
@@ -20,6 +20,6 @@ backend:
   minReadySeconds: 5
   terminationGracePeriodSeconds: 5
 
-db-image:
+db_image:
   name: mariadb
   tag: 10.6
