@@ -1,0 +1,11 @@
+app:
+  name: duniversity-deployment
+
+replicaCount: 2
+
+image:
+  repository: shubha20/duniversity-college-portal-frontend
+  tag: v1.1.0
+
+ports:
+  containerPort: 3000
