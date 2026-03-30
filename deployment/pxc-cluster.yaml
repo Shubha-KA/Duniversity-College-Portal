@@ -19,6 +19,7 @@ spec:
 
     volumeSpec:
       persistentVolumeClaim:
+        storageClassName: csi-standard
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
