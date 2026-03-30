@@ -1,7 +1,7 @@
 app:
   name: duniversity-deployment
 
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: shubha20/duniversity-college-portal-frontend
