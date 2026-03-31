@@ -4,7 +4,7 @@ metadata:
   name: duniversity-monitor
   namespace: monitoring
   labels: 
-    release: monitoring
+    release: duniversity-chart
 spec:
   selector:
     matchLabels:
