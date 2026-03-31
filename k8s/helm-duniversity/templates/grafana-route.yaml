@@ -8,14 +8,11 @@ spec:
     - name: kgateway   
       namespace: college-ns       
 
-  hostnames:
-    - grafana.opslora.com   
-
   rules:
     - matches:
         - path:
             type: PathPrefix
             value: /grafana
       backendRefs:
-        - name: monitoring-grafana
+        - name: prometheus-grafana
           port: 80

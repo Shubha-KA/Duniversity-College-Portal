@@ -8,14 +8,11 @@ spec:
     - name: kgateway
       namespace: college-ns
 
-  hostnames:
-    - prometheus.opslora.com
-
   rules:
     - matches:
         - path:
             type: PathPrefix
-            value: /
+            value: /prometheus
       backendRefs:
-        - name: monitoring-kube-prometheus-prometheus
+        - name: prometheus-kube-prometheus-prometheus
           port: 9090
