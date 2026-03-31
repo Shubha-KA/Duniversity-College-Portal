@@ -9,7 +9,7 @@ spec:
       namespace: college-ns       
 
   hostnames:
-    - grafana.opslora.com   # optional (recommended)
+    - grafana.opslora.com   
 
   rules:
     - matches:
