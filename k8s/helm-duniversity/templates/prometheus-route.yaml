@@ -13,6 +13,14 @@ spec:
         - path:
             type: PathPrefix
             value: /prometheus
+
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+              
       backendRefs:
         - name: prometheus-kube-prometheus-prometheus
           port: 9090

@@ -13,6 +13,13 @@ spec:
         - path:
             type: PathPrefix
             value: /grafana
+            
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
       backendRefs:
         - name: prometheus-grafana
           port: 80
