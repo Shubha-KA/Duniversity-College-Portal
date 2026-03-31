@@ -6,5 +6,5 @@ grafana:
 
 prometheus:
   prometheusSpec:
-    externalUrl: http://<YOUR-HAPROXY-IP>/prometheus
+    externalUrl: http://13.206.82.120/prometheus
     routePrefix: /prometheus
