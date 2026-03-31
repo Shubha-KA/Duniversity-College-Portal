@@ -8,8 +8,8 @@ spec:
     - name: kgateway
       namespace: college-ns
 
-  # hostnames:
-  #   - prometheus.yourdomain.com
+  hostnames:
+    - prometheus.opslora.com
 
   rules:
     - matches:

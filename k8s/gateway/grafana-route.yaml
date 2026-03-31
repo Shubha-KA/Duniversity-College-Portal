@@ -8,8 +8,8 @@ spec:
     - name: kgateway   
       namespace: college-ns       
 
-  # hostnames:
-  #   - grafana.yourdomain.com   # optional (recommended)
+  hostnames:
+    - grafana.opslora.com   # optional (recommended)
 
   rules:
     - matches:
