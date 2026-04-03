@@ -3,6 +3,6 @@ kind: ClusterRole
 metadata:
   name: cluster-pod-manager
 rules:
-  - apiGroups: [""]
-    resources: ["nodes","namespaces", "pods"]
-    verbs: ["get", "list", "watch"]
+- apiGroups: [""]
+  resources: ["nodes","namespaces", "pods"]
+  verbs: ["get", "list", "watch"]

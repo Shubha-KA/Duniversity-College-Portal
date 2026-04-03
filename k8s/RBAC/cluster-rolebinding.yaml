@@ -3,9 +3,9 @@ kind: ClusterRoleBinding
 metadata:
   name: cluster-access
 subjects:
-  - kind: User
-    name: raj
-    apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: raj
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: cluster-pod-manager

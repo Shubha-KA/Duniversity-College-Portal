@@ -4,9 +4,9 @@ metadata:
   name: pod-access
   namespace: gateway-system
 subjects:
-  - kind: User
-    name: raj
-    apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: raj
+  apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
   name: raj-pod-manager
