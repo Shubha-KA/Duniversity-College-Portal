@@ -9,5 +9,5 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: dev-team
+  name: development-team
   apiGroup: rbac.authorization.k8s.io
