@@ -4,9 +4,9 @@ metadata:
   name: cluster-access
 subjects:
   - kind: User
-    name: shubha
+    name: raj
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
-  name: cluster-manager
+  name: cluster-pod-manager
   apiGroup: rbac.authorization.k8s.io

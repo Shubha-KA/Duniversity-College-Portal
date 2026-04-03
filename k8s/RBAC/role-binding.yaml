@@ -1,13 +1,13 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: pod-access-name
-  namespace: default
+  name: pod-access
+  namespace: gateway-system
 subjects:
   - kind: User
-    name: shubha
+    name: raj
     apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role
-  name: pod-manager
+  name: raj-pod-manager
   apiGroup: rbac.authorization.k8s.io
