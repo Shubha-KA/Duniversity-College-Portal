@@ -4,6 +4,6 @@ metadata:
   name: test-team
   namespace: shubha-ns
 rules:
-- apiGroups: [""]
+- apiGroups: ["","apps"]
   resources: ["services"]
   verbs: ["get","list","watch"]

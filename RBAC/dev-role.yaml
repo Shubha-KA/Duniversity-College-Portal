@@ -4,6 +4,6 @@ metadata:
   name: development-team
   namespace: shubha-ns
 rules:
-- apiGroups: [""]
+- apiGroups: ["","apps"]
   resources: ["pods","deployments"]
   verbs: ["get","list","watch","create","delete"]
