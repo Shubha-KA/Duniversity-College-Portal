@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: {{ .Values.backend_app.name }}
-  namespace: college-ns
+  namespace: shubha-ns
 spec:
   serviceName: mariadb
   replicas: {{ .Values.backend.replicaCount }}
@@ -81,7 +81,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mariadb
-  namespace: college-ns
+  namespace: shubha-ns
 spec:
   selector:
     app: maria-db

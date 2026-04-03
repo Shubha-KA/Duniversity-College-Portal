@@ -65,4 +65,4 @@ data:
 kind: ConfigMap
 metadata:
   name: mariadb-init
-  namespace: college-ns
+  namespace: shubha-ns

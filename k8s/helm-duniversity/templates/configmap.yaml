@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mariadb-config
-  namespace: college-ns
+  namespace: shubha-ns
 data:
   DB_USER: college_user
   DB_HOST: mariadb
